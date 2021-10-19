@@ -1,0 +1,30 @@
+QUERY con JOIN
+
+A) Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+	SELECT *
+	FROM `degrees`
+	INNER JOIN `students`
+	ON `degrees`.`id` = `students`.`degree_id`
+	WHERE `degrees`.`name` = 'Corso di Laurea in Economia'
+
+B) Selezionare tutti i corsi di Laurea del Dipartimento di Neuroscienze
+	SELECT * 
+	FROM `departments`
+	INNER JOIN `degrees`
+	ON `departments`.`id` = `degrees`.`department_id`
+	WHERE `departments`.`name` = 'Dipartimento di Neuroscienze'
+
+c) Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti
+   e il relativo dipartimento, in ordine alfabetico per cognome e nome
+	
+	/*Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome*/
+
+	/*Quali dati dobbiamo selezionare: corso laurea e dipartimento di tutti gli studenti*/ 
+	SELECT `degrees`.`id` AS 'id_corso_di_laurea', `degrees`.`name`, `departments`.`id` AS 'id_dipartimento',`departments`.`name`, `students`.`id`, `students`.`name`
+	FROM `departments`
+	INNER JOIN `degrees` ON `departments`.`id` = `degrees`.`department_id`
+	INNER JOIN `students` ON `degrees`.`id` = `students`.`degree_id`
+
+D) Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+E) Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica
